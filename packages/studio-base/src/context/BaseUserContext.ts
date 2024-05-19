@@ -5,19 +5,14 @@
 import { createContext, useContext } from "react";
 
 export type UserType =
-  | "unauthenticated"
-  | "authenticated-free"
-  | "authenticated-team"
   | "authenticated-enterprise";
 
 export interface CurrentUser {
   currentUserType: UserType;
-  signIn?: () => void;
-  signOut?: () => Promise<void>;
 }
 
 const BaseUserContext = createContext<CurrentUser>({
-  currentUserType: "unauthenticated",
+  currentUserType: "authenticated-enterprise",
 });
 BaseUserContext.displayName = "BaseUserContext";
 

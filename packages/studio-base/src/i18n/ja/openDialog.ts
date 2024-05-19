@@ -5,11 +5,6 @@
 import { TypeOptions } from "i18next";
 
 export const openDialog: Partial<TypeOptions["resources"]["openDialog"]> = {
-  canBeShared: "チームメイトとデータファイル、可視化レイアウト、およびカスタム拡張子を共有できます",
-  collaborateTitle: "Foxglove で開発を加速する",
-  convenientWebInterface:
-    "便利なWebインターフェースを使用して、データをタグ付け、検索、および高速に取得",
-  createAFreeAccount: "無料のアカウントを作成する",
   exploreSampleData: "サンプルデータを探索する",
   joinOurCommunity: "コミュニティに参加する",
   joinOurCommunityDescription:
@@ -28,16 +23,7 @@ export const openDialog: Partial<TypeOptions["resources"]["openDialog"]> = {
   openDataSource: "データソースを開く",
   openLocalFile: "ローカルファイルを開く",
   openLocalFileDescription: "ローカルファイルシステムから直接データを可視化します。",
-  openUrl: "データをアップロードして共有する",
-  openUrlDescription: "Foxglove を使用して、チームとデータを共有します。",
   recentDataSources: "最近のデータソース",
-  secureStorageOfData: "ROSまたはカスタムデータをペタバイト単位で安全に保存",
   seeTutorials: "チュートリアルを見る",
-  shareLayouts: "レイアウトを共有する",
-  signIn: "ログイン",
-  startCollaborating: "Foxgloveの組織とコラボレーションを開始する",
-  startCollaboratingDescription:
-    "Foxgloveアカウントを最大限に活用しましょう。たとえば、データを詳細に分析したり、チームメイトとツールを共有したりすることができます。",
-  uploadToDataPlatform: "Data Platformにアップロードする",
   viewOurDocs: "ドキュメンテーションを見る",
 };

@@ -3,11 +3,6 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
 export const openDialog = {
-  canBeShared: "Share data files, visualization layouts, and custom extensions with teammates",
-  collaborateTitle: "Accelerate development with Foxglove",
-  convenientWebInterface:
-    "Use a convenient web interface to tag, search, and retrieve data at lightning speed",
-  createAFreeAccount: "Create a free account",
   exploreSampleData: "Explore sample data",
   joinOurCommunity: "Join our community",
   joinOurCommunityDescription:
@@ -25,16 +20,7 @@ export const openDialog = {
   openDataSource: "Open data source",
   openLocalFile: "Open local file",
   openLocalFileDescription: "Visualize data directly from your local filesystem.",
-  openUrl: "Upload and share data",
-  openUrlDescription: "Use Foxglove to share data with your team.",
   recentDataSources: "Recent data sources",
-  secureStorageOfData: "Securely store petabytes of ROS or custom data",
   seeTutorials: "See tutorials",
-  shareLayouts: "Share layouts",
-  signIn: "Sign in",
-  startCollaborating: "Start collaborating with your Foxglove organization",
-  startCollaboratingDescription:
-    "Make the most of your Foxglove account – whether you want to dive deep on your data or share tools with your teammates.",
-  uploadToDataPlatform: "Upload to Data Platform",
   viewOurDocs: "View our docs",
 };

@@ -41,7 +41,6 @@ import {
 } from "@foxglove/studio-base/components/MessagePipeline";
 import PlaybackSpeedControls from "@foxglove/studio-base/components/PlaybackSpeedControls";
 import Stack from "@foxglove/studio-base/components/Stack";
-import { useCurrentUser } from "@foxglove/studio-base/context/BaseUserContext";
 import { EventsStore, useEvents } from "@foxglove/studio-base/context/EventsContext";
 import {
   WorkspaceContextStore,
@@ -113,7 +112,6 @@ export default function PlaybackControls(props: {
   const { classes, cx } = useStyles();
   const repeat = useWorkspaceStore(selectPlaybackRepeat);
   const [createEventDialogOpen, setCreateEventDialogOpen] = useState(false);
-  const { currentUserType } = useCurrentUser();
   const eventsSupported = useEvents(selectEventsSupported);
 
   const {
@@ -213,7 +211,7 @@ export default function PlaybackControls(props: {
         </div>
         <Stack direction="row" alignItems="center" flex={1} gap={1}>
           <Stack direction="row" alignItems="center" flex={1} gap={0.5}>
-            {currentUserType !== "unauthenticated" && eventsSupported && (
+            {eventsSupported && (
               <HoverableIconButton
                 size="small"
                 title="Create event"

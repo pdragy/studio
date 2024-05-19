@@ -129,7 +129,7 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-type SectionKey = "resources" | "products" | "contact" | "legal";
+type SectionKey = "resources" | "contact" | "legal";
 
 const aboutItems = new Map<
   SectionKey,
@@ -146,16 +146,6 @@ const aboutItems = new Map<
         ...(isDesktopApp() ? [] : [{ title: "Desktop app", url: "https://foxglove.dev/download" }]),
         { title: "Browse docs", url: "https://docs.foxglove.dev/docs" },
         { title: "Join our community", url: "https://foxglove.dev/community" },
-      ],
-    },
-  ],
-  [
-    "products",
-    {
-      subheader: "Products",
-      links: [
-        { title: "Foxglove Studio", url: "https://foxglove.dev/studio" },
-        { title: "Foxglove Data Platform", url: "https://foxglove.dev/data-platform" },
       ],
     },
   ],
@@ -323,7 +313,6 @@ export function AppSettingsDialog(
               </Stack>
               {[
                 aboutItems.get("resources"),
-                aboutItems.get("products"),
                 aboutItems.get("contact"),
                 aboutItems.get("legal"),
               ].map((item) => {
