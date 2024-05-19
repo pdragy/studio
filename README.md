@@ -1,6 +1,50 @@
-[![Accelerate your robotics development](https://user-images.githubusercontent.com/14011012/195918769-5aaeedf3-5de2-48fb-951e-7399f2b9e190.png)](https://foxglove.dev)
 
-<br/>
+## Installation
+
+Requirements:
+
+* node
+* yarn
+
+Run live development server, default port 8080.
+
+```
+yarn run web:serve
+```
+
+Build production server
+
+```
+yarn run web:build:prod
+```
+
+Run "storybook", default port 9009:
+```
+yarn storybook
+```
+
+## Docker
+
+The build uses a multi-stage Dockerfile. First it builds the prod node app, then copies app files into caddy container which is used to serve the app. Does not do a good job of caching, so it's fastest to develop with the node/yarn tooling.
+
+Build the container image:
+
+```
+docker build -t foxglove .
+```
+
+Run the container interactively, with the default layout on default port 8080:
+```
+docker run --rm -it -p 8080:8080 foxglove
+```
+
+OR Run the container, mounting a custom layout in the current directory, and serving on port 8081
+```
+docker run --entrypoint= --rm -it -p 8081:8081 -v $PWD/foxglove-layout.json:/foxglove/default-layout.json /bin/sh -c "caddy file-server --listen :8081"
+```
+
+> [!NOTE]
+> Below here lies the old README for foxglove-studio, which is now archived. The links and information may not be relevant, and will soon be removed.
 
 > [!NOTE]
 > Foxglove Studio 1.x is no longer supported. To install the latest release, please visit our [downloads page](https://foxglove.dev/download). Learn more in our [Foxglove 2.0 announcement](https://foxglove.dev/blog/foxglove-2-0-unifying-robotics-observability).
@@ -37,9 +81,7 @@ Foxglove is a visualization and observability platform for robotics development.
   </p>
 </div>
 
-## Installation
 
-[Create a free account](https://app.foxglove.dev/signup) or [download Foxglove](https://foxglove.dev/download) for Linux, Windows, or macOS to get started.
 
 ## Documentation
 
