@@ -20,6 +20,8 @@ import {
   IDataSourceFactory,
   usePlayerSelection,
 } from "@foxglove/studio-base/context/PlayerSelectionContext";
+import { defaultLayout } from "@foxglove/studio-base/providers/CurrentLayoutProvider/defaultLayout";
+import { migratePanelsState } from "@foxglove/studio-base/services/migrateLayout";
 import useCallbackWithToast from "@foxglove/studio-base/hooks/useCallbackWithToast";
 import { PlaybackSpeed } from "@foxglove/studio-base/players/types";
 import { AppEvent } from "@foxglove/studio-base/services/IAnalytics";
@@ -82,6 +84,9 @@ export type WorkspaceActions = {
     // Export the current layout to a file
     // This will perform a browser download of the current layout to a file
     exportToFile: () => void;
+    // Reset layout.
+    // This will reset to the original layout
+    reset: () => void;
   };
 };
 
@@ -164,6 +169,13 @@ export function useWorkspaceActions(): WorkspaceActions {
 
     void analytics.logEvent(AppEvent.LAYOUT_IMPORT);
   }, [analytics, appContext, isMounted, setCurrentLayout]);
+
+  const resetLayout = useCallback(() => {
+    const layoutData = migratePanelsState(defaultLayout);
+    setCurrentLayout({ data: layoutData });
+
+    void analytics.logEvent(AppEvent.LAYOUT_RESET);
+  }, [analytics, setCurrentLayout]);
 
   const exportLayoutToFile = useCallback(() => {
     // Use a stable getter to fetch the current layout to avoid thrashing the
@@ -322,9 +334,10 @@ export function useWorkspaceActions(): WorkspaceActions {
       },
 
       layoutActions: {
+        reset: resetLayout,
         importFromFile: importLayoutFromFile,
         exportToFile: exportLayoutToFile,
       },
     };
-  }, [exportLayoutToFile, importLayoutFromFile, openFile, set]);
+  }, [exportLayoutToFile, importLayoutFromFile, openFile, resetLayout, set]);
 }

@@ -39,6 +39,7 @@ enum AppEvent {
   LAYOUT_SELECT = "Studio: Layout Selected",
   LAYOUT_IMPORT = "Studio: Layout Imported",
   LAYOUT_EXPORT = "Studio: Layout Exported",
+  LAYOUT_RESET = "Studio: Layout Reset",
   LAYOUT_SHARE = "Studio: Layout Shared",
   LAYOUT_OVERWRITE = "Studio: Layout Overwritten",
   LAYOUT_REVERT = "Studio: Layout Reverted",

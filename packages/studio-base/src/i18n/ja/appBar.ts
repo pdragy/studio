@@ -21,6 +21,7 @@ export const appBar: Partial<TypeOptions["resources"]["appBar"]> = {
   openConnection: "接続を開く",
   openLocalFile: "ローカルファイルを開く",
   recentDataSources: "最近のデータソース",
+  resetLayout: "レイアウトをリセットする",
   settings: "設定",
   unknown: "不明",
   userProfile: "ユーザープロファイル",
