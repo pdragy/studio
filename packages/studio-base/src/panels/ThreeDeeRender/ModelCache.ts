@@ -18,7 +18,7 @@ import { BuiltinPanelExtensionContext } from "@foxglove/studio-base/components/P
 const log = Logger.getLogger(__filename);
 
 export type MeshUpAxis = "y_up" | "z_up";
-export const DEFAULT_MESH_UP_AXIS: MeshUpAxis = "y_up";
+export const DEFAULT_MESH_UP_AXIS: MeshUpAxis = "z_up";
 
 export type ModelCacheOptions = {
   edgeMaterial: THREE.Material;
