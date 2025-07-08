@@ -107,7 +107,7 @@
     "geojson": "0.5.0",
     "gl-matrix": "3.4.3",
     "hammerjs": "2.0.8",
-    "i18next": "23.8.2",
+    "i18next": "23.5.1",
     "i18next-browser-languagedetector": "7.1.0",
     "idb-keyval": "6.2.1",
     "immer": "10.0.3",
@@ -135,7 +135,7 @@
     "react-dnd-html5-backend": "16.0.1",
     "react-dom": "18.2.0",
     "react-hover-observer": "2.1.1",
-    "react-i18next": "14.0.5",
+    "react-i18next": "14.0.1",
     "react-json-tree": "patch:react-json-tree@npm:0.15.1#../../patches/react-json-tree.patch",
     "react-markdown": "8.0.7",
     "react-mosaic-component": "6.1.0",
@@ -158,13 +158,13 @@
     "tinycolor2": "1.6.0",
     "ts-essentials": "9.4.1",
     "ts-key-enum": "2.0.12",
-    "ts-loader": "9.5.1",
-    "tss-react": "4.9.3",
-    "typescript": "5.3.3",
+    "ts-loader": "9.4.4",
+    "tss-react": "4.9.2",
+    "typescript": "5.2.2",
     "use-debounce": "10.0.0",
     "use-immer": "0.9.0",
     "uuid": "9.0.1",
-    "webpack": "5.90.1",
-    "zustand": "4.5.0"
+    "webpack": "5.88.2",
+    "zustand": "4.5.5"
   }
 }
