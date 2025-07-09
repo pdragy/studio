@@ -16,8 +16,6 @@ export const appBar: Partial<TypeOptions["resources"]["appBar"]> = {
   hideLeftSidebar: "隐藏左侧边栏",
   hideRightSidebar: "隐藏右侧边栏",
   importLayoutFromFile: "通过文件导入布局……",
-  joinOurSlack: "加入我们的 Slack",
-  joinSlackCommunity: "加入 Slack 社区",
   noDataSource: "没有数据源",
   open: "打开……",
   openConnection: "打开连接……",
