@@ -348,11 +348,6 @@ function buildMenu(browserWindow: BrowserWindow): Menu {
         click: () => {
         },
       },
-      {
-        label: t("appBar:viewOurDocs"),
-        click: () => {
-        },
-      },
       { type: "separator" },
       {
         label: t("appBar:exploreSampleData"),

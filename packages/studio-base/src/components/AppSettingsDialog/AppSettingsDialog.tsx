@@ -137,8 +137,8 @@ const aboutItems = new Map<
     {
       subheader: "External resources",
       links: [
-        ...(isDesktopApp() ? [] : [{ title: "Desktop app", url: "https://foxglove.dev/download" }]),
-        { title: "Browse docs", url: "https://docs.foxglove.dev/docs" },
+        { title: "Trillium Github", url: "https://github.com/pdragy/trillium" },
+        { title: "Foxglove docs", url: "https://docs.foxglove.dev/docs" },
       ],
     },
   ],
@@ -147,18 +147,7 @@ const aboutItems = new Map<
     {
       subheader: "Contact",
       links: [
-        { title: "Give feedback", url: "https://foxglove.dev/contact" },
-        { title: "Schedule a demo", url: "https://foxglove.dev/demo" },
-      ],
-    },
-  ],
-  [
-    "legal",
-    {
-      subheader: "Legal",
-      links: [
-        { title: "License terms", url: "https://foxglove.dev/legal/studio-license" },
-        { title: "Privacy policy", url: "https://foxglove.dev/legal/privacy" },
+        { title: "Give feedback", url: "https://github.com/pdragy/trillium/discussions" },
       ],
     },
   ],
