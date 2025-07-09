@@ -7,8 +7,6 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import tinycolor from "tinycolor2";
 import { makeStyles } from "tss-react/mui";
-
-import FoxgloveLogoText from "@foxglove/studio-base/components/FoxgloveLogoText";
 import Stack from "@foxglove/studio-base/components/Stack";
 import TextMiddleTruncate from "@foxglove/studio-base/components/TextMiddleTruncate";
 import { useAnalytics } from "@foxglove/studio-base/context/AnalyticsContext";
@@ -34,7 +32,7 @@ const useStyles = makeStyles()((theme) => ({
     },
   },
   header: {
-    padding: theme.spacing(6),
+    padding: theme.spacing(3),
     gridArea: "header",
 
     [theme.breakpoints.down("md")]: {
@@ -91,13 +89,6 @@ const useStyles = makeStyles()((theme) => ({
   },
   recentSourceSecondary: {
     color: "inherit",
-  },
-  featureList: {
-    paddingLeft: theme.spacing(1.5),
-
-    "li:not(:last-of-type)": {
-      marginBottom: theme.spacing(0.5),
-    },
   },
 }));
 
@@ -185,7 +176,6 @@ export default function Start(): JSX.Element {
   return (
     <Stack className={classes.grid}>
       <header className={classes.header}>
-        <FoxgloveLogoText color="primary" className={classes.logo} />
       </header>
       <Stack className={classes.content}>
         <Stack gap={4}>

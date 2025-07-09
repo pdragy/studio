@@ -29,7 +29,6 @@ import { AppSetting } from "@foxglove/studio-base";
 import OsContextSingleton from "@foxglove/studio-base/OsContextSingleton";
 import CopyButton from "@foxglove/studio-base/components/CopyButton";
 import { ExperimentalFeatureSettings } from "@foxglove/studio-base/components/ExperimentalFeatureSettings";
-import FoxgloveLogoText from "@foxglove/studio-base/components/FoxgloveLogoText";
 import Stack from "@foxglove/studio-base/components/Stack";
 import { useAppContext } from "@foxglove/studio-base/context/AppContext";
 import {
@@ -299,9 +298,6 @@ export function AppSettingsDialog(
             className={cx(classes.tabPanel, { [classes.tabPanelActive]: activeTab === "about" })}
           >
             <Stack gap={2} alignItems="flex-start">
-              <header>
-                <FoxgloveLogoText color="primary" className={classes.logo} />
-              </header>
               <Stack direction="row" alignItems="center" gap={1}>
                 <Typography variant="body2">
                   Foxglove Studio version {FOXGLOVE_STUDIO_VERSION}
