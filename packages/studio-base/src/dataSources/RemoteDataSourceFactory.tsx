@@ -49,16 +49,6 @@ class RemoteDataSourceFactory implements IDataSourceFactory {
   public iconName: IDataSourceFactory["iconName"] = "FileASPX";
   public supportedFileTypes = [".bag", ".mcap"];
   public description = "Open pre-recorded .bag or .mcap files from a remote location.";
-  public docsLinks = [
-    {
-      label: "ROS 1",
-      url: "https://docs.foxglove.dev/docs/connecting-to-data/frameworks/ros1#remote-file",
-    },
-    {
-      label: "MCAP",
-      url: "https://docs.foxglove.dev/docs/connecting-to-data/frameworks/mcap#remote-file",
-    },
-  ];
 
   public formConfig = {
     fields: [
@@ -72,12 +62,6 @@ class RemoteDataSourceFactory implements IDataSourceFactory {
       },
     ],
   };
-
-  public warning = (
-    <>
-      Loading large files over HTTP can be slow.
-    </>
-  );
 
   public initialize(args: DataSourceFactoryInitializeArgs): Player | undefined {
     const url = args.params?.url;

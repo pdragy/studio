@@ -36,7 +36,7 @@ const LAYER_ID = "foxglove.Grid";
 const DEFAULT_SIZE = 10;
 const DEFAULT_DIVISIONS = 10;
 const DEFAULT_LINE_WIDTH = 1;
-const DEFAULT_COLOR = "#248eff";
+const DEFAULT_COLOR = "#6e8d3b";
 const MAX_DIVISIONS = 4096; // The JS heap size is a limiting factor
 const LINE_OPTIONS = { worldUnits: false };
 

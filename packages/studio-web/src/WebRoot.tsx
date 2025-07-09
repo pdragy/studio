@@ -6,7 +6,6 @@ import { useMemo } from "react";
 
 import {
   AppBarProps,
-  AppSetting,
   IDataSourceFactory,
   Ros1LocalBagDataSourceFactory,
   Ros2LocalBagDataSourceFactory,
@@ -21,8 +20,6 @@ import {
 
 import LocalStorageAppConfiguration from "./services/LocalStorageAppConfiguration";
 
-const isDevelopment = process.env.NODE_ENV === "development";
-
 export function WebRoot(props: {
   extraProviders: JSX.Element[] | undefined;
   dataSources: IDataSourceFactory[] | undefined;
@@ -33,7 +30,6 @@ export function WebRoot(props: {
     () =>
       new LocalStorageAppConfiguration({
         defaults: {
-          [AppSetting.SHOW_DEBUG_PANELS]: isDevelopment,
         },
       }),
     [],

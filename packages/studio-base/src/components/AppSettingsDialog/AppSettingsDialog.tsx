@@ -5,13 +5,10 @@
 import CloseIcon from "@mui/icons-material/Close";
 import {
   Button,
-  Checkbox,
   Dialog,
   DialogActions,
   DialogProps,
   DialogTitle,
-  FormControlLabel,
-  FormLabel,
   IconButton,
   Link,
   Tab,
@@ -23,8 +20,6 @@ import { MouseEvent, SyntheticEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { makeStyles } from "tss-react/mui";
 
-import { AppSetting } from "@foxglove/studio-base";
-import OsContextSingleton from "@foxglove/studio-base/OsContextSingleton";
 import CopyButton from "@foxglove/studio-base/components/CopyButton";
 import Stack from "@foxglove/studio-base/components/Stack";
 import { useAppContext } from "@foxglove/studio-base/context/AppContext";
@@ -32,11 +27,9 @@ import {
   useWorkspaceStore,
   WorkspaceContextStore,
 } from "@foxglove/studio-base/context/Workspace/WorkspaceContext";
-import { useAppConfigurationValue } from "@foxglove/studio-base/hooks";
 import isDesktopApp from "@foxglove/studio-base/util/isDesktopApp";
 
 import {
-  AutoUpdate,
   ColorSchemeSettings,
   LanguageSettings,
   LaunchDefault,
@@ -150,7 +143,7 @@ const aboutItems = new Map<
   ],
 ]);
 
-export type AppSettingsTab = "general" | "extensions" | "experimental-features" | "about";
+export type AppSettingsTab = "general" | "extensions" | "about";
 
 const selectWorkspaceInitialActiveTab = (store: WorkspaceContextStore) =>
   store.dialogs.preferences.initialTab;
@@ -164,20 +157,10 @@ export function AppSettingsDialog(
   const [activeTab, setActiveTab] = useState<AppSettingsTab>(
     _activeTab ?? initialActiveTab ?? "general",
   );
-  const [debugModeEnabled = false, setDebugModeEnabled] = useAppConfigurationValue<boolean>(
-    AppSetting.SHOW_DEBUG_PANELS,
-  );
   const { classes, cx, theme } = useStyles();
   const smUp = useMediaQuery(theme.breakpoints.up("sm"));
 
   const { extensionSettings } = useAppContext();
-
-  // automatic updates are a desktop-only setting
-  //
-  // electron-updater does not provide a way to detect if we are on a supported update platform
-  // so we hard-code linux as an _unsupported_ auto-update platform since we cannot auto-update
-  // with our .deb package install method on linux.
-  const supportsAppUpdates = isDesktopApp() && OsContextSingleton?.platform !== "linux";
 
   const handleTabChange = (_event: SyntheticEvent, newValue: AppSettingsTab) => {
     setActiveTab(newValue);
@@ -208,11 +191,6 @@ export function AppSettingsDialog(
           {extensionSettings && (
             <Tab className={classes.tab} label={t("extensions")} value="extensions" />
           )}
-          <Tab
-            className={classes.tab}
-            label={t("experimentalFeatures")}
-            value="experimental-features"
-          />
           <Tab className={classes.tab} label={t("about")} value="about" />
         </Tabs>
         <Stack direction="row" fullHeight overflowY="auto">
@@ -227,25 +205,8 @@ export function AppSettingsDialog(
               <TimeFormat orientation={smUp ? "horizontal" : "vertical"} />
               <MessageFramerate />
               <LanguageSettings />
-              {supportsAppUpdates && <AutoUpdate />}
               {!isDesktopApp() && <LaunchDefault />}
               {isDesktopApp() && <RosPackagePath />}
-              <Stack>
-                <FormLabel>{t("advanced")}:</FormLabel>
-                <FormControlLabel
-                  className={classes.formControlLabel}
-                  control={
-                    <Checkbox
-                      className={classes.checkbox}
-                      checked={debugModeEnabled}
-                      onChange={(_, checked) => {
-                        void setDebugModeEnabled(checked);
-                      }}
-                    />
-                  }
-                  label={t("debugModeDescription")}
-                />
-              </Stack>
             </Stack>
           </section>
 
@@ -265,7 +226,7 @@ export function AppSettingsDialog(
             <Stack gap={2} alignItems="flex-start">
               <Stack direction="row" alignItems="center" gap={1}>
                 <Typography variant="body2">
-                  Foxglove Studio version {FOXGLOVE_STUDIO_VERSION}
+                  Trillium version {FOXGLOVE_STUDIO_VERSION}
                 </Typography>
                 <CopyButton
                   size="small"

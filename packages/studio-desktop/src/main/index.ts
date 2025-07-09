@@ -10,7 +10,6 @@ import Logger from "@foxglove/log";
 import { AppSetting } from "@foxglove/studio-base/src/AppSetting";
 import { initI18n } from "@foxglove/studio-base/src/i18n";
 
-import StudioAppUpdater from "./StudioAppUpdater";
 import StudioWindow from "./StudioWindow";
 import getDevModeIcon from "./getDevModeIcon";
 import injectFilesToOpen from "./injectFilesToOpen";
@@ -226,15 +225,6 @@ export async function main(): Promise<void> {
     const initialWindow = new StudioWindow([...deepLinks, ...openUrls]);
 
     registerRosPackageProtocolHandlers();
-
-    // Only production builds check for automatic updates
-    if (process.env.NODE_ENV !== "production") {
-      log.info("Automatic updates disabled (development environment)");
-    } else if (/-(dev|nightly)/.test(FOXGLOVE_PRODUCT_VERSION)) {
-      log.info("Automatic updates disabled (development version)");
-    }
-
-    StudioAppUpdater.Instance().start();
 
     app.setAboutPanelOptions({
       applicationName: FOXGLOVE_PRODUCT_NAME,
