@@ -3,7 +3,6 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
 import {
-  DataSourceFactoryInitializeArgs,
   IDataSourceFactory,
 } from "@foxglove/studio-base/context/PlayerSelectionContext";
 import { IterablePlayer } from "@foxglove/studio-base/players/IterablePlayer";
@@ -19,9 +18,7 @@ class SampleNuscenesDataSourceFactory implements IDataSourceFactory {
   public hidden = true;
   public sampleLayout = SampleNuscenesLayout as IDataSourceFactory["sampleLayout"];
 
-  public initialize(
-    args: DataSourceFactoryInitializeArgs,
-  ): ReturnType<IDataSourceFactory["initialize"]> {
+  public initialize(): ReturnType<IDataSourceFactory["initialize"]> {
     const bagUrl = "https://assets.foxglove.dev/NuScenes-v1.0-mini-scene-0061-df24c12.mcap";
 
     const source = new WorkerSerializedIterableSource({
@@ -41,7 +38,6 @@ class SampleNuscenesDataSourceFactory implements IDataSourceFactory {
       source,
       isSampleDataSource: true,
       name: "Adapted from nuScenes dataset. Copyright © 2020 nuScenes. https://www.nuscenes.org/terms-of-use",
-      metricsCollector: args.metricsCollector,
       // Use blank url params so the data source is set in the url
       urlParams: {},
       sourceId: this.id,

@@ -7,11 +7,9 @@ import * as _ from "lodash-es";
 import { useMemo, useRef, useState, ReactElement, useEffect } from "react";
 
 import Stack from "@foxglove/studio-base/components/Stack";
-import { useAnalytics } from "@foxglove/studio-base/context/AnalyticsContext";
 import useGlobalVariables, {
   GlobalVariables,
 } from "@foxglove/studio-base/hooks/useGlobalVariables";
-import { AppEvent } from "@foxglove/studio-base/services/IAnalytics";
 
 import Variable from "./Variable";
 
@@ -23,8 +21,6 @@ export default function VariablesList(): ReactElement {
 
   // Don't run the animation when the sidebar first renders
   const skipAnimation = useRef<boolean>(true);
-
-  const analytics = useAnalytics();
 
   useEffect(() => {
     const timeoutId = setTimeout(() => (skipAnimation.current = false), ANIMATION_RESET_DELAY_MS);
@@ -79,7 +75,6 @@ export default function VariablesList(): ReactElement {
           disabled={globalVariables[""] != undefined}
           onClick={() => {
             setGlobalVariables({ "": '""' });
-            void analytics.logEvent(AppEvent.VARIABLE_ADD);
           }}
         >
           Add variable

@@ -21,7 +21,6 @@ import {
 } from "@foxglove/studio-base/components/PanelExtensionAdapter";
 import { HUDItemManager } from "@foxglove/studio-base/panels/ThreeDeeRender/HUDItemManager";
 import { ICameraHandler } from "@foxglove/studio-base/panels/ThreeDeeRender/renderables/ICameraHandler";
-import IAnalytics from "@foxglove/studio-base/services/IAnalytics";
 import { LabelPool } from "@foxglove/three-text";
 
 import { HUDItem } from "./HUDItemManager";
@@ -265,8 +264,6 @@ export interface IRenderer extends EventEmitter<RendererEvents> {
   sharedGeometry: SharedGeometry;
 
   /** Optional analytics API to log events in Renderer or SceneExtensions */
-  analytics?: IAnalytics;
-  setAnalytics(analytics: IAnalytics): void;
   enableImageOnlySubscriptionMode: () => void;
   disableImageOnlySubscriptionMode: () => void;
 

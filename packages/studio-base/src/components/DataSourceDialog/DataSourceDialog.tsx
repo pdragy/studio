@@ -10,14 +10,12 @@ import { makeStyles } from "tss-react/mui";
 
 import Snow from "@foxglove/studio-base/components/DataSourceDialog/Snow";
 import Stack from "@foxglove/studio-base/components/Stack";
-import { useAnalytics } from "@foxglove/studio-base/context/AnalyticsContext";
 import { usePlayerSelection } from "@foxglove/studio-base/context/PlayerSelectionContext";
 import {
   WorkspaceContextStore,
   useWorkspaceStore,
 } from "@foxglove/studio-base/context/Workspace/WorkspaceContext";
 import { useWorkspaceActions } from "@foxglove/studio-base/context/Workspace/useWorkspaceActions";
-import { AppEvent } from "@foxglove/studio-base/services/IAnalytics";
 
 import Connection from "./Connection";
 import Start from "./Start";
@@ -56,12 +54,9 @@ export function DataSourceDialog(props: DataSourceDialogProps): JSX.Element {
     return availableSources.find((source) => source.type === "sample");
   }, [availableSources]);
 
-  const analytics = useAnalytics();
-
   const onModalClose = useCallback(() => {
-    void analytics.logEvent(AppEvent.DIALOG_CLOSE, { activeDataSource });
     dialogActions.dataSource.close();
-  }, [analytics, activeDataSource, dialogActions.dataSource]);
+  }, [activeDataSource, dialogActions.dataSource]);
 
   const prevActiveViewRef = useRef<DataSourceDialogItem | undefined>();
   useLayoutEffect(() => {

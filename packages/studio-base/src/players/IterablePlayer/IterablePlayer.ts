@@ -21,14 +21,12 @@ import {
 } from "@foxglove/rostime";
 import { Immutable, MessageEvent, ParameterValue } from "@foxglove/studio";
 import { DeserializedSourceWrapper } from "@foxglove/studio-base/players/IterablePlayer/DeserializedSourceWrapper";
-import NoopMetricsCollector from "@foxglove/studio-base/players/NoopMetricsCollector";
 import PlayerProblemManager from "@foxglove/studio-base/players/PlayerProblemManager";
 import {
   AdvertiseOptions,
   PlaybackSpeed,
   Player,
   PlayerCapabilities,
-  PlayerMetricsCollectorInterface,
   PlayerPresence,
   PlayerState,
   PlayerStateActiveData,
@@ -80,7 +78,6 @@ const MEMORY_INFO_BUFFERED_MSGS = "Buffered messages";
 const EMPTY_ARRAY = Object.freeze([]);
 
 type IterablePlayerOptions = {
-  metricsCollector?: PlayerMetricsCollectorInterface;
 
   source: IDeserializedIterableSource | ISerializedIterableSource;
 
@@ -146,7 +143,6 @@ export class IterablePlayer implements Player {
 
   #capabilities: string[] = [PlayerCapabilities.setSpeed, PlayerCapabilities.playbackControl];
   #profile: string | undefined;
-  #metricsCollector: PlayerMetricsCollectorInterface;
   #subscriptions: SubscribePayload[] = [];
   #allTopics: TopicSelection = new Map();
   #preloadTopics: TopicSelection = new Map();
@@ -199,7 +195,6 @@ export class IterablePlayer implements Player {
 
   public constructor(options: IterablePlayerOptions) {
     const {
-      metricsCollector,
       urlParams,
       source,
       name,
@@ -224,8 +219,6 @@ export class IterablePlayer implements Player {
 
     this.#name = name;
     this.#urlParams = urlParams;
-    this.#metricsCollector = metricsCollector ?? new NoopMetricsCollector();
-    this.#metricsCollector.playerConstructed();
     this.#enablePreload = enablePreload ?? true;
     this.#sourceId = sourceId;
 

@@ -34,7 +34,6 @@ import {
   SubscribePayload,
   Topic,
   PlayerPresence,
-  PlayerMetricsCollectorInterface,
   TopicStats,
   TopicWithSchemaName,
   PlaybackSpeed,
@@ -112,7 +111,6 @@ export default class RosbridgePlayer implements Player {
   #advertisements: AdvertiseOptions[] = [];
   #parsedTopics = new Set<string>();
   #receivedBytes: number = 0;
-  #metricsCollector: PlayerMetricsCollectorInterface;
   #presence: PlayerPresence = PlayerPresence.NOT_PRESENT;
   #problems = new PlayerProblemManager();
   #emitTimer?: ReturnType<typeof setTimeout>;
@@ -122,18 +120,14 @@ export default class RosbridgePlayer implements Player {
 
   public constructor({
     url,
-    metricsCollector,
     sourceId,
   }: {
     url: string;
-    metricsCollector: PlayerMetricsCollectorInterface;
     sourceId: string;
   }) {
     this.#presence = PlayerPresence.INITIALIZING;
-    this.#metricsCollector = metricsCollector;
     this.#url = url;
     this.#start = fromMillis(Date.now());
-    this.#metricsCollector.playerConstructed();
     this.#sourceId = sourceId;
     this.#open();
   }

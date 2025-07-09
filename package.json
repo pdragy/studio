@@ -1,21 +1,21 @@
 {
-  "name": "foxglove-studio",
-  "version": "1.87.1-dev",
-  "description": "Integrated robotics visualization and debugging.",
-  "productName": "Foxglove Studio",
-  "productDescription": "Foxglove Studio is a highly customizable and extensible visualization and display tool for robotics.",
-  "license": "MPL-2.0",
+  "name": "trillium",
+  "version": "3.0.0",
+  "description": "Integrated robotics visualization and control.",
+  "productName": "Trillium",
+  "productDescription": "Trillium is a visualization and control tool for robotics.",
+  "license": "BEERWARE",
   "private": true,
   "packageManager": "yarn@3.6.3",
   "repository": {
     "type": "git",
-    "url": "https://github.com/foxglove/studio.git"
+    "url": "https://github.com/pdragy/trillium.git"
   },
   "author": {
-    "name": "Foxglove Technologies",
-    "email": "support@foxglove.dev"
+    "name": "Paul Draghicescu",
+    "email": "pdragy@gmail.com"
   },
-  "homepage": "https://foxglove.dev/",
+  "homepage": "https://github.com/pdragy/trillium.git/",
   "engines": {
     "node": ">=16"
   },

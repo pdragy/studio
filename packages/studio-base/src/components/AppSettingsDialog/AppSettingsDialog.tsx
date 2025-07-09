@@ -3,9 +3,7 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
 import CloseIcon from "@mui/icons-material/Close";
-import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import {
-  Alert,
   Button,
   Checkbox,
   Dialog,
@@ -28,7 +26,6 @@ import { makeStyles } from "tss-react/mui";
 import { AppSetting } from "@foxglove/studio-base";
 import OsContextSingleton from "@foxglove/studio-base/OsContextSingleton";
 import CopyButton from "@foxglove/studio-base/components/CopyButton";
-import { ExperimentalFeatureSettings } from "@foxglove/studio-base/components/ExperimentalFeatureSettings";
 import Stack from "@foxglove/studio-base/components/Stack";
 import { useAppContext } from "@foxglove/studio-base/context/AppContext";
 import {
@@ -261,21 +258,6 @@ export function AppSettingsDialog(
               <Stack gap={2}>{extensionSettings}</Stack>
             </section>
           )}
-
-          <section
-            className={cx(classes.tabPanel, {
-              [classes.tabPanelActive]: activeTab === "experimental-features",
-            })}
-          >
-            <Stack gap={2}>
-              <Alert color="warning" icon={<WarningAmberIcon />}>
-                {t("experimentalFeaturesDescription")}
-              </Alert>
-              <Stack paddingLeft={2}>
-                <ExperimentalFeatureSettings />
-              </Stack>
-            </Stack>
-          </section>
 
           <section
             className={cx(classes.tabPanel, { [classes.tabPanelActive]: activeTab === "about" })}

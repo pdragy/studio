@@ -169,13 +169,13 @@ function makeElectronBuilderConfig(params) {
       },
     },
     appx: {
-      applicationId: "FoxgloveStudio",
+      applicationId: "Trillium",
       backgroundColor: "#f7def6",
-      displayName: "Foxglove Studio",
-      identityName: "Foxglove.Studio",
-      publisher:
-        "CN=Foxglove Technologies, O=Foxglove Technologies, L=San Francisco, S=California, C=US",
-      publisherDisplayName: "Foxglove Technologies",
+      displayName: "Trillium",
+      identityName: "Trillium",
+      //publisher:
+      //  "CN=Foxglove Technologies, O=Foxglove Technologies, L=San Francisco, S=California, C=US",
+      //publisherDisplayName: "Foxglove Technologies",
       languages: ["en-US"],
       addAutoLaunchExtension: false,
       showNameOnTiles: false,

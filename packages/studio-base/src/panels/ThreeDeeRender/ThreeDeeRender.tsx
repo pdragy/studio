@@ -25,7 +25,6 @@ import {
 } from "@foxglove/studio";
 import { AppSetting } from "@foxglove/studio-base/AppSetting";
 import { BuiltinPanelExtensionContext } from "@foxglove/studio-base/components/PanelExtensionAdapter";
-import { useAnalytics } from "@foxglove/studio-base/context/AnalyticsContext";
 import {
   DEFAULT_SCENE_EXTENSION_CONFIG,
   SceneExtensionConfig,
@@ -90,7 +89,6 @@ export function ThreeDeeRender(props: {
     unstable_fetchAsset: fetchAsset,
     unstable_setMessagePathDropConfig: setMessagePathDropConfig,
   } = context;
-  const analytics = useAnalytics();
 
   // Load and save the persisted panel configuration
   const [config, setConfig] = useState<Immutable<RendererConfig>>(() => {
@@ -173,10 +171,7 @@ export function ThreeDeeRender(props: {
   ]);
 
   useEffect(() => {
-    if (renderer) {
-      renderer.setAnalytics(analytics);
-    }
-  }, [renderer, analytics]);
+  }, [renderer]);
 
   useEffect(() => {
     setMessagePathDropConfig(

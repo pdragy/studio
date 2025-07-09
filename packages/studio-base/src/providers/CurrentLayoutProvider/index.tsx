@@ -11,7 +11,6 @@ import { v4 as uuidv4 } from "uuid";
 import { useShallowMemo } from "@foxglove/hooks";
 import Logger from "@foxglove/log";
 import { VariableValue } from "@foxglove/studio";
-import { useAnalytics } from "@foxglove/studio-base/context/AnalyticsContext";
 import CurrentLayoutContext, {
   ICurrentLayout,
   LayoutState,
@@ -32,7 +31,6 @@ import {
   SwapPanelPayload,
 } from "@foxglove/studio-base/context/CurrentLayoutContext/actions";
 import panelsReducer from "@foxglove/studio-base/providers/CurrentLayoutProvider/reducers";
-import { AppEvent } from "@foxglove/studio-base/services/IAnalytics";
 import { PanelConfig, UserScripts } from "@foxglove/studio-base/types/panels";
 import { getPanelTypeFromId } from "@foxglove/studio-base/util/layout";
 
@@ -47,7 +45,6 @@ export const MAX_SUPPORTED_LAYOUT_VERSION = 1;
  * automatically restoring the current layout from LayoutStorage.
  */
 export default function CurrentLayoutProvider({ children }: React.PropsWithChildren): JSX.Element {
-  const analytics = useAnalytics();
 
   const [mosaicId] = useState(() => uuidv4());
 
@@ -179,7 +176,6 @@ export default function CurrentLayoutProvider({ children }: React.PropsWithChild
       createTabPanel: (payload: CreateTabPanelPayload) => {
         performAction({ type: "CREATE_TAB_PANEL", payload });
         setSelectedPanelIds([]);
-        void analytics.logEvent(AppEvent.PANEL_ADD, { type: "Tab" });
       },
       changePanelLayout: (payload: ChangePanelLayoutPayload) => {
         performAction({ type: "CHANGE_PANEL_LAYOUT", payload });
@@ -200,10 +196,6 @@ export default function CurrentLayoutProvider({ children }: React.PropsWithChild
         // Deselect the removed panel
         setSelectedPanelIds((ids) => ids.filter((id) => id !== closedId));
 
-        void analytics.logEvent(
-          AppEvent.PANEL_DELETE,
-          typeof closedId === "string" ? { type: getPanelTypeFromId(closedId) } : undefined,
-        );
       },
       splitPanel: (payload: SplitPanelPayload) => {
         performAction({ type: "SPLIT_PANEL", payload });
@@ -223,25 +215,15 @@ export default function CurrentLayoutProvider({ children }: React.PropsWithChild
           );
           setSelectedPanelIds(_.difference(afterPanelIds, beforePanelIds));
         }
-        void analytics.logEvent(AppEvent.PANEL_ADD, { type: payload.type, action: "swap" });
-        void analytics.logEvent(AppEvent.PANEL_DELETE, {
-          type: getPanelTypeFromId(payload.originalId),
-          action: "swap",
-        });
       },
       moveTab: (payload: MoveTabPayload) => {
         performAction({ type: "MOVE_TAB", payload });
       },
       addPanel: (payload: AddPanelPayload) => {
         performAction({ type: "ADD_PANEL", payload });
-        void analytics.logEvent(AppEvent.PANEL_ADD, { type: getPanelTypeFromId(payload.id) });
       },
       dropPanel: (payload: DropPanelPayload) => {
         performAction({ type: "DROP_PANEL", payload });
-        void analytics.logEvent(AppEvent.PANEL_ADD, {
-          type: payload.newPanelType,
-          action: "drop",
-        });
       },
       startDrag: (payload: StartDragPayload) => {
         performAction({ type: "START_DRAG", payload });
@@ -250,7 +232,7 @@ export default function CurrentLayoutProvider({ children }: React.PropsWithChild
         performAction({ type: "END_DRAG", payload });
       },
     }),
-    [analytics, performAction, setCurrentLayout, setSelectedPanelIds, updateSharedPanelState],
+    [performAction, setCurrentLayout, setSelectedPanelIds, updateSharedPanelState],
   );
 
   const value: ICurrentLayout = useShallowMemo({

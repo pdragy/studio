@@ -35,7 +35,6 @@ import {
 import { HUDItemManager } from "@foxglove/studio-base/panels/ThreeDeeRender/HUDItemManager";
 import { LayerErrors } from "@foxglove/studio-base/panels/ThreeDeeRender/LayerErrors";
 import { ICameraHandler } from "@foxglove/studio-base/panels/ThreeDeeRender/renderables/ICameraHandler";
-import IAnalytics from "@foxglove/studio-base/services/IAnalytics";
 import { palette, fontMonospace } from "@foxglove/theme";
 import { LabelMaterial, LabelPool } from "@foxglove/three-text";
 
@@ -242,7 +241,6 @@ export class Renderer extends EventEmitter<RendererEvents> implements IRenderer 
   public readonly displayTemporaryError?: (str: string) => void;
   /** Options passed for local testing and storybook. */
   public readonly testOptions: TestOptions;
-  public analytics?: IAnalytics;
 
   public constructor(args: {
     canvas: HTMLCanvasElement;
@@ -1526,9 +1524,6 @@ export class Renderer extends EventEmitter<RendererEvents> implements IRenderer 
     });
   };
 
-  public setAnalytics(analytics: IAnalytics): void {
-    this.analytics = analytics;
-  }
 }
 
 function queueMessage(
