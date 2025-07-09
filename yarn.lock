@@ -2898,7 +2898,7 @@ __metadata:
     async-mutex: 0.4.0
     builder-util: "*"
     clean-webpack-plugin: 4.0.0
-    electron: 25.5.0
+    electron: 28.3.2
     electron-builder: 24.6.4
     electron-devtools-installer: 3.2.0
     electron-squirrel-startup: 1.0.0
@@ -10737,7 +10737,7 @@ __metadata:
     "@foxglove/studio-base": "workspace:*"
     "@foxglove/studio-desktop": "workspace:*"
     "@foxglove/tsconfig": 2.0.0
-    electron: 25.5.0
+    electron: 28.3.2
     playwright: 1.37.1
     webpack: 5.88.2
   languageName: unknown
@@ -11305,16 +11305,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron@npm:25.5.0":
-  version: 25.5.0
-  resolution: "electron@npm:25.5.0"
+"electron@npm:28.3.2":
+  version: 28.3.2
+  resolution: "electron@npm:28.3.2"
   dependencies:
     "@electron/get": ^2.0.0
     "@types/node": ^18.11.18
     extract-zip: ^2.0.1
   bin:
     electron: cli.js
-  checksum: 070e482de16420e1ea1372886426ff5fdbc7f87e171a2bf9de4df351fc90c7a32d56b26a577b4a4e3d95c0a98869faab8d59bf40ee77356912c05dda6d5fd678
+  checksum: 9a213fdb57690f604be8a0ea0d0e3e1dda3c8b33c9e330feab643494b51e79aba103e10ad65b89d7c740fd8b3d5167459f7dad96ff83e8e4199bc651592604b6
   languageName: node
   linkType: hard
 
@@ -12873,7 +12873,7 @@ __metadata:
     babel-plugin-transform-import-meta: 2.2.1
     cross-env: 7.0.3
     depcheck: 1.4.7
-    electron: 25.5.0
+    electron: 28.3.2
     electron-builder: 24.6.4
     eslint: 8.50.0
     eslint-config-prettier: 9.1.0
