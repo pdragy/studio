@@ -10,7 +10,7 @@ import {
   Menu,
   MenuItem,
   MenuItemConstructorOptions,
-  TitleBarOverlayOptions,
+  TitleBarOverlay,
   app,
   nativeTheme,
   shell,
@@ -45,7 +45,7 @@ function getWindowBackgroundColor(): string | undefined {
   return theme.background?.default;
 }
 
-function getTitleBarOverlayOptions(): TitleBarOverlayOptions {
+function getTitleBarOverlayOptions(): TitleBarOverlay {
   const theme = palette[nativeTheme.shouldUseDarkColors ? "dark" : "light"];
   if (isWindows) {
     return {
