@@ -8,14 +8,12 @@ import { makeStyles } from "tss-react/mui";
 
 import { BuiltinIcon } from "@foxglove/studio-base/components/BuiltinIcon";
 import Stack from "@foxglove/studio-base/components/Stack";
-import { useAnalytics } from "@foxglove/studio-base/context/AnalyticsContext";
 import { usePlayerSelection } from "@foxglove/studio-base/context/PlayerSelectionContext";
 import {
   WorkspaceContextStore,
   useWorkspaceStore,
 } from "@foxglove/studio-base/context/Workspace/WorkspaceContext";
 import { useWorkspaceActions } from "@foxglove/studio-base/context/Workspace/useWorkspaceActions";
-import { AppEvent } from "@foxglove/studio-base/services/IAnalytics";
 
 import { FormField } from "./FormField";
 import View from "./View";
@@ -94,7 +92,6 @@ export default function Connection(): JSX.Element {
   const { dialogActions } = useWorkspaceActions();
 
   const { availableSources, selectSource } = usePlayerSelection();
-  const analytics = useAnalytics();
 
   // connectionSources is the list of availableSources supporting "connections"
   const connectionSources = useMemo(() => {
@@ -113,10 +110,6 @@ export default function Connection(): JSX.Element {
   const [selectedConnectionIdx, setSelectedConnectionIdx] = useState<number>(() => {
     const foundIdx = connectionSources.findIndex((source) => source === activeDataSource);
     const selectedIdx = foundIdx < 0 ? 0 : foundIdx;
-    void analytics.logEvent(AppEvent.DIALOG_SELECT_VIEW, {
-      type: "live",
-      data: enabledSourcesFirst[selectedIdx]?.id,
-    });
     return selectedIdx;
   });
 
@@ -151,13 +144,11 @@ export default function Connection(): JSX.Element {
       return;
     }
     selectSource(selectedSource.id, { type: "connection", params: fieldValues });
-    void analytics.logEvent(AppEvent.DIALOG_CLOSE, { activeDataSource });
     dialogActions.dataSource.close();
   }, [
     selectedSource,
     selectSource,
     fieldValues,
-    analytics,
     activeDataSource,
     dialogActions.dataSource,
   ]);
@@ -190,10 +181,6 @@ export default function Connection(): JSX.Element {
             orientation={mdUp ? "vertical" : "horizontal"}
             onChange={(_event, newValue: number) => {
               setSelectedConnectionIdx(newValue);
-              void analytics.logEvent(AppEvent.DIALOG_SELECT_VIEW, {
-                type: "live",
-                data: enabledSourcesFirst[newValue]?.id,
-              });
             }}
             value={selectedConnectionIdx}
           >

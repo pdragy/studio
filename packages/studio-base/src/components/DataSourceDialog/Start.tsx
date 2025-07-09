@@ -9,10 +9,8 @@ import { makeStyles } from "tss-react/mui";
 
 import Stack from "@foxglove/studio-base/components/Stack";
 import TextMiddleTruncate from "@foxglove/studio-base/components/TextMiddleTruncate";
-import { useAnalytics } from "@foxglove/studio-base/context/AnalyticsContext";
 import { usePlayerSelection } from "@foxglove/studio-base/context/PlayerSelectionContext";
 import { useWorkspaceActions } from "@foxglove/studio-base/context/Workspace/useWorkspaceActions";
-import { AppEvent } from "@foxglove/studio-base/services/IAnalytics";
 
 const useStyles = makeStyles()((theme) => ({
   grid: {
@@ -118,7 +116,6 @@ function DataSourceOption(props: DataSourceOptionProps): JSX.Element {
 export default function Start(): JSX.Element {
   const { recentSources, selectRecent } = usePlayerSelection();
   const { classes } = useStyles();
-  const analytics = useAnalytics();
   const { t } = useTranslation("openDialog");
   const { dialogActions } = useWorkspaceActions();
 
@@ -135,7 +132,6 @@ export default function Start(): JSX.Element {
         ),
         onClick: () => {
           dialogActions.dataSource.open("file");
-          void analytics.logEvent(AppEvent.DIALOG_SELECT_VIEW, { type: "local" });
         },
       },
       {
@@ -149,11 +145,10 @@ export default function Start(): JSX.Element {
         ),
         onClick: () => {
           dialogActions.dataSource.open("connection");
-          void analytics.logEvent(AppEvent.DIALOG_SELECT_VIEW, { type: "live" });
         },
       },
     ];
-  }, [analytics, dialogActions.dataSource, t]);
+  }, [dialogActions.dataSource, t]);
 
   return (
     <Stack className={classes.grid}>

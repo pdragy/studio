@@ -19,7 +19,6 @@ import { useWarnImmediateReRender } from "@foxglove/hooks";
 import Logger from "@foxglove/log";
 import { Immutable } from "@foxglove/studio";
 import { MessagePipelineProvider } from "@foxglove/studio-base/components/MessagePipeline";
-import { useAnalytics } from "@foxglove/studio-base/context/AnalyticsContext";
 import { useAppContext } from "@foxglove/studio-base/context/AppContext";
 import { ExtensionCatalogContext } from "@foxglove/studio-base/context/ExtensionCatalogContext";
 import PlayerSelectionContext, {
@@ -28,7 +27,6 @@ import PlayerSelectionContext, {
   PlayerSelection,
 } from "@foxglove/studio-base/context/PlayerSelectionContext";
 import useIndexedDbRecents, { RecentRecord } from "@foxglove/studio-base/hooks/useIndexedDbRecents";
-import AnalyticsMetricsCollector from "@foxglove/studio-base/players/AnalyticsMetricsCollector";
 import {
   TopicAliasFunctions,
   TopicAliasingPlayer,
@@ -49,9 +47,6 @@ export default function PlayerManager(props: PropsWithChildren<PlayerManagerProp
   const { wrapPlayer } = useAppContext();
 
   const isMounted = useMountedState();
-
-  const analytics = useAnalytics();
-  const metricsCollector = useMemo(() => new AnalyticsMetricsCollector(analytics), [analytics]);
 
   const [playerInstances, setPlayerInstances] = useState<
     { topicAliasPlayer: TopicAliasingPlayer; player: Player } | undefined
@@ -112,14 +107,11 @@ export default function PlayerManager(props: PropsWithChildren<PlayerManagerProp
         return;
       }
 
-      metricsCollector.setProperty("player", sourceId);
-
       setSelectedSource(foundSource);
 
       // Sample sources don't need args or prompts to initialize
       if (foundSource.type === "sample") {
         const newPlayer = foundSource.initialize({
-          metricsCollector,
         });
 
         constructPlayers(newPlayer);
@@ -136,7 +128,6 @@ export default function PlayerManager(props: PropsWithChildren<PlayerManagerProp
         switch (args.type) {
           case "connection": {
             const newPlayer = foundSource.initialize({
-              metricsCollector,
               params: args.params,
             });
             constructPlayers(newPlayer);
@@ -173,7 +164,6 @@ export default function PlayerManager(props: PropsWithChildren<PlayerManagerProp
               const newPlayer = foundSource.initialize({
                 file: multiFile ? undefined : file,
                 files: multiFile ? fileList : undefined,
-                metricsCollector,
               });
 
               constructPlayers(newPlayer);
@@ -198,7 +188,6 @@ export default function PlayerManager(props: PropsWithChildren<PlayerManagerProp
 
               const newPlayer = foundSource.initialize({
                 file,
-                metricsCollector,
               });
 
               constructPlayers(newPlayer);
@@ -219,7 +208,7 @@ export default function PlayerManager(props: PropsWithChildren<PlayerManagerProp
         enqueueSnackbar((error as Error).message, { variant: "error" });
       }
     },
-    [playerSources, metricsCollector, enqueueSnackbar, constructPlayers, addRecent, isMounted],
+    [playerSources, enqueueSnackbar, constructPlayers, addRecent, isMounted],
   );
 
   // Select a recent entry by id

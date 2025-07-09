@@ -42,7 +42,6 @@ import {
 } from "@foxglove/studio-base/panels/ThreeDeeRender/renderables/projections";
 import { t3D } from "@foxglove/studio-base/panels/ThreeDeeRender/t3D";
 import { makePose } from "@foxglove/studio-base/panels/ThreeDeeRender/transforms";
-import { AppEvent } from "@foxglove/studio-base/services/IAnalytics";
 import { downloadFiles } from "@foxglove/studio-base/util/download";
 
 import { ImageModeCamera } from "./ImageModeCamera";
@@ -1006,7 +1005,6 @@ export class ImageMode
         // remove any leading / so the image name doesn't start with _
         const topicName = topic.replace(/^\/+/, "");
         const fileName = `${topicName}-${stamp.sec}-${stamp.nsec}`;
-        void this.renderer.analytics?.logEvent(AppEvent.IMAGE_DOWNLOAD);
         if (this.renderer.testOptions.onDownloadImage) {
           this.renderer.testOptions.onDownloadImage(blob, fileName);
         } else {

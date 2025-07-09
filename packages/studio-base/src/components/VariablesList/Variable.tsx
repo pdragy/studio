@@ -26,11 +26,9 @@ import { VariableValue } from "@foxglove/studio";
 import CopyButton from "@foxglove/studio-base/components/CopyButton";
 import JsonInput from "@foxglove/studio-base/components/JsonInput";
 import Stack from "@foxglove/studio-base/components/Stack";
-import { useAnalytics } from "@foxglove/studio-base/context/AnalyticsContext";
 import useGlobalVariables, {
   GlobalVariables,
 } from "@foxglove/studio-base/hooks/useGlobalVariables";
-import { AppEvent } from "@foxglove/studio-base/services/IAnalytics";
 
 const useStyles = makeStyles<void, "copyButton">()((theme, _params, classes) => ({
   root: {
@@ -130,13 +128,10 @@ export default function Variable(props: {
     setAnchorEl(undefined);
   };
 
-  const analytics = useAnalytics();
-
   const deleteVariable = useCallback(() => {
     setGlobalVariables({ [name]: undefined });
-    void analytics.logEvent(AppEvent.VARIABLE_DELETE);
     handleClose();
-  }, [analytics, name, setGlobalVariables]);
+  }, [name, setGlobalVariables]);
 
   const value = useMemo(() => globalVariables[name], [globalVariables, name]);
 

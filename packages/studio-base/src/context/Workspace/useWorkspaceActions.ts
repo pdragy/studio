@@ -10,7 +10,6 @@ import { useMountedState } from "react-use";
 import { useGuaranteedContext } from "@foxglove/hooks";
 import { AppSettingsTab } from "@foxglove/studio-base/components/AppSettingsDialog/AppSettingsDialog";
 import { DataSourceDialogItem } from "@foxglove/studio-base/components/DataSourceDialog";
-import { useAnalytics } from "@foxglove/studio-base/context/AnalyticsContext";
 import { useAppContext } from "@foxglove/studio-base/context/AppContext";
 import {
   LayoutData,
@@ -23,7 +22,6 @@ import {
 import useCallbackWithToast from "@foxglove/studio-base/hooks/useCallbackWithToast";
 import { PlaybackSpeed } from "@foxglove/studio-base/players/types";
 import { defaultLayout } from "@foxglove/studio-base/providers/CurrentLayoutProvider/defaultLayout";
-import { AppEvent } from "@foxglove/studio-base/services/IAnalytics";
 import { migratePanelsState } from "@foxglove/studio-base/services/migrateLayout";
 import { downloadTextFile } from "@foxglove/studio-base/util/download";
 
@@ -106,7 +104,6 @@ export function useWorkspaceActions(): WorkspaceActions {
 
   const { availableSources } = usePlayerSelection();
 
-  const analytics = useAnalytics();
   const appContext = useAppContext();
 
   const isMounted = useMountedState();
@@ -167,15 +164,13 @@ export function useWorkspaceActions(): WorkspaceActions {
 
     setCurrentLayout({ data });
 
-    void analytics.logEvent(AppEvent.LAYOUT_IMPORT);
-  }, [analytics, appContext, isMounted, setCurrentLayout]);
+  }, [appContext, isMounted, setCurrentLayout]);
 
   const resetLayout = useCallback(() => {
     const layoutData = migratePanelsState(defaultLayout);
     setCurrentLayout({ data: layoutData });
 
-    void analytics.logEvent(AppEvent.LAYOUT_RESET);
-  }, [analytics, setCurrentLayout]);
+  }, [setCurrentLayout]);
 
   const exportLayoutToFile = useCallback(() => {
     // Use a stable getter to fetch the current layout to avoid thrashing the
@@ -188,8 +183,7 @@ export function useWorkspaceActions(): WorkspaceActions {
     const name = getCurrentLayoutState().selectedLayout?.name ?? "foxglove-layout";
     const content = JSON.stringify(layoutData, undefined, 2) ?? "";
     downloadTextFile(content, `${name}.json`);
-    void analytics.logEvent(AppEvent.LAYOUT_EXPORT);
-  }, [analytics, getCurrentLayoutState]);
+  }, [getCurrentLayoutState]);
 
   return useMemo(() => {
     return {

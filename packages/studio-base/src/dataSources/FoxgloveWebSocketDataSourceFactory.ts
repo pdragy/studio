@@ -60,7 +60,6 @@ export default class FoxgloveWebSocketDataSourceFactory implements IDataSourceFa
 
     return new FoxgloveWebSocketPlayer({
       url,
-      metricsCollector: args.metricsCollector,
       sourceId: this.id,
     });
   }

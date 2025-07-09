@@ -8,11 +8,6 @@ import { DeepPartial } from "ts-essentials";
 
 import { useCrash } from "@foxglove/hooks";
 import { CaptureErrorBoundary } from "@foxglove/studio-base/components/CaptureErrorBoundary";
-import {
-  ForwardAnalyticsContextProvider,
-  ForwardedAnalytics,
-  useForwardAnalytics,
-} from "@foxglove/studio-base/components/ForwardAnalyticsContextProvider";
 import Panel from "@foxglove/studio-base/components/Panel";
 import {
   BuiltinPanelExtensionContext,
@@ -28,26 +23,23 @@ import { InterfaceMode } from "./types";
 
 type InitPanelArgs = {
   crash: ReturnType<typeof useCrash>;
-  forwardedAnalytics: ForwardedAnalytics;
   interfaceMode: InterfaceMode;
   testOptions: TestOptions;
   customSceneExtensions?: DeepPartial<SceneExtensionConfig>;
 };
 
 function initPanel(args: InitPanelArgs, context: BuiltinPanelExtensionContext) {
-  const { crash, forwardedAnalytics, interfaceMode, testOptions, customSceneExtensions } = args;
+  const { crash, interfaceMode, testOptions, customSceneExtensions } = args;
   // eslint-disable-next-line react/no-deprecated
   ReactDOM.render(
     <StrictMode>
       <CaptureErrorBoundary onError={crash}>
-        <ForwardAnalyticsContextProvider forwardedAnalytics={forwardedAnalytics}>
-          <ThreeDeeRender
-            context={context}
-            interfaceMode={interfaceMode}
-            testOptions={testOptions}
-            customSceneExtensions={customSceneExtensions}
-          />
-        </ForwardAnalyticsContextProvider>
+        <ThreeDeeRender
+          context={context}
+          interfaceMode={interfaceMode}
+          testOptions={testOptions}
+          customSceneExtensions={customSceneExtensions}
+        />
       </CaptureErrorBoundary>
     </StrictMode>,
     context.panelElement,
@@ -68,7 +60,6 @@ type Props = {
 function ThreeDeeRenderAdapter(interfaceMode: InterfaceMode, props: Props) {
   const crash = useCrash();
 
-  const forwardedAnalytics = useForwardAnalytics();
   const { injectedFeatures } = useAppContext();
   const customSceneExtensions = useMemo(() => {
     if (injectedFeatures == undefined) {
@@ -84,14 +75,12 @@ function ThreeDeeRenderAdapter(interfaceMode: InterfaceMode, props: Props) {
     () =>
       initPanel.bind(undefined, {
         crash,
-        forwardedAnalytics,
         interfaceMode,
         testOptions: { onDownloadImage: props.onDownloadImage, debugPicking: props.debugPicking },
         customSceneExtensions,
       }),
     [
       crash,
-      forwardedAnalytics,
       interfaceMode,
       props.onDownloadImage,
       props.debugPicking,

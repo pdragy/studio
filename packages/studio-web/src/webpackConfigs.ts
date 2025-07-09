@@ -152,7 +152,7 @@ export const mainConfig =
     <head>
       <meta charset="utf-8">
       <meta name="apple-mobile-web-app-capable" content="yes">
-      ${htmlWebpackPlugin.options.foxgloveExtraHeadTags}
+      ${htmlWebpackPlugin.options.extraHeadTags}
       <style type="text/css" id="loading-styles">
         body {
           margin: 0;
@@ -179,8 +179,8 @@ export const mainConfig =
     </body>
   </html>
   `,
-          foxgloveExtraHeadTags: `
-            <title>Foxglove Studio</title>
+          extraHeadTags: `
+            <title>Trillium</title>
             <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
             <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
             <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
