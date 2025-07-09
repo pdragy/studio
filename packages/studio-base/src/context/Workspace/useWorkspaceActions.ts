@@ -20,11 +20,11 @@ import {
   IDataSourceFactory,
   usePlayerSelection,
 } from "@foxglove/studio-base/context/PlayerSelectionContext";
-import { defaultLayout } from "@foxglove/studio-base/providers/CurrentLayoutProvider/defaultLayout";
-import { migratePanelsState } from "@foxglove/studio-base/services/migrateLayout";
 import useCallbackWithToast from "@foxglove/studio-base/hooks/useCallbackWithToast";
 import { PlaybackSpeed } from "@foxglove/studio-base/players/types";
+import { defaultLayout } from "@foxglove/studio-base/providers/CurrentLayoutProvider/defaultLayout";
 import { AppEvent } from "@foxglove/studio-base/services/IAnalytics";
+import { migratePanelsState } from "@foxglove/studio-base/services/migrateLayout";
 import { downloadTextFile } from "@foxglove/studio-base/util/download";
 
 import {

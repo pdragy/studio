@@ -21,7 +21,7 @@ export class DesktopExtensionLoader implements ExtensionLoader {
     const extensionList = (await this.#bridge?.getExtensions()) ?? [];
     log.debug(`Loaded ${extensionList.length} extension(s)`);
 
-    const extensions = extensionList.map<ExtensionInfo>((item) => {
+    const extensions = extensionList.map((item): ExtensionInfo => {
       const pkgInfo = item.packageJson as ExtensionInfo;
       return {
         id: item.id,

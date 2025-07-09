@@ -3,15 +3,7 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
 import { StoryFn, StoryObj } from "@storybook/react";
-import { ReactNode } from "react";
 
-import BaseUserContext, {
-  CurrentUser,
-  UserType,
-} from "@foxglove/studio-base/context/BaseUserContext";
-import PlayerSelectionContext, {
-  PlayerSelection,
-} from "@foxglove/studio-base/context/PlayerSelectionContext";
 import MockCurrentLayoutProvider from "@foxglove/studio-base/providers/CurrentLayoutProvider/MockCurrentLayoutProvider";
 import WorkspaceContextProvider from "@foxglove/studio-base/providers/WorkspaceContextProvider";
 
@@ -47,71 +39,6 @@ export default {
   parameters: { colorScheme: "dark" },
   decorators: [Wrapper],
 };
-
-// Connection
-const playerSelection: PlayerSelection = {
-  selectSource: () => {},
-  selectRecent: () => {},
-  recentSources: [
-    {
-      id: "1111",
-      title: "NuScenes-v1.0-mini-scene-0655-reallllllllly-long-name-8829908290831091.bag",
-    },
-    {
-      id: "2222",
-      title: "http://localhost:11311",
-      label: "ROS 1",
-    },
-    {
-      id: "3333",
-      title: "ws://localhost:9090/",
-      label: "Rosbridge (ROS 1 & 2)",
-    },
-    {
-      id: "4444",
-      title: "ws://localhost:8765",
-      label: "Foxglove WebSocket",
-    },
-    {
-      id: "5555",
-      title: "ws://1.2.3.4:8765",
-      label: "Foxglove WebSocket",
-    },
-    {
-      id: "6666",
-      title: "THIS ITEM SHOULD BE HIDDEN IN STORYBOOKS",
-      label: "!!!!!!!!!!!!",
-    },
-  ],
-  availableSources: [
-    {
-      id: "foo",
-      type: "connection",
-      displayName: "My Data Source",
-      description: "Data source description",
-      iconName: "ROS",
-      warning: "This is a warning",
-
-      formConfig: {
-        fields: [{ id: "key", label: "Some Label" }],
-      },
-
-      initialize: () => {
-        return undefined;
-      },
-    },
-  ],
-};
-
-function CurrentUserWrapper(props: {
-  children: ReactNode;
-  userType?: UserType | undefined;
-}): JSX.Element {
-  const value: CurrentUser = {
-    currentUserType: props.userType ?? "authenticated-enterprise",
-  };
-  return <BaseUserContext.Provider value={value}>{props.children}</BaseUserContext.Provider>;
-}
 
 const Default = (): JSX.Element => <DataSourceDialog backdropAnimation={false} />;
 

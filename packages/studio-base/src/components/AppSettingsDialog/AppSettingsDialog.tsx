@@ -60,11 +60,6 @@ const useStyles = makeStyles()((theme) => ({
       gridTemplateColumns: "auto minmax(0, 1fr)",
     },
   },
-  logo: {
-    width: 212,
-    height: "auto",
-    marginLeft: theme.spacing(-1),
-  },
   tabPanel: {
     display: "none",
     marginRight: "-100%",
