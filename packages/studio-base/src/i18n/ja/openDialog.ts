@@ -6,10 +6,6 @@ import { TypeOptions } from "i18next";
 
 export const openDialog: Partial<TypeOptions["resources"]["openDialog"]> = {
   exploreSampleData: "サンプルデータを探索する",
-  joinOurCommunity: "コミュニティに参加する",
-  joinOurCommunityDescription:
-    "SlackやGitHubに参加して、ヘルプを得たり、機能リクエストを行ったり、バグを報告しましょう。",
-  joinOurSlack: "Slackに参加する",
   learnMore: "詳細を見る",
   needHelp: "ヘルプが必要ですか？",
   needHelpDescription:

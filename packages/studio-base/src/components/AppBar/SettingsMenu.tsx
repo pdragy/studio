@@ -58,10 +58,6 @@ export function SettingsMenu({
     window.open("https://docs.foxglove.dev/docs", "_blank");
   }, []);
 
-  const onSlackClick = useCallback(() => {
-    window.open("https://foxglove.dev/slack", "_blank");
-  }, []);
-
   return (
     <>
       <Menu
@@ -98,7 +94,6 @@ export function SettingsMenu({
         )}
         <Divider variant="middle" />
         <MenuItem onClick={onDocsClick}>{t("documentation")}</MenuItem>
-        <MenuItem onClick={onSlackClick}>{t("joinSlackCommunity")}</MenuItem>
       </Menu>
     </>
   );

@@ -353,11 +353,6 @@ function buildMenu(browserWindow: BrowserWindow): Menu {
         click: () => {
         },
       },
-      {
-        label: t("appBar:joinOurSlack"),
-        click: () => {
-        },
-      },
       { type: "separator" },
       {
         label: t("appBar:exploreSampleData"),

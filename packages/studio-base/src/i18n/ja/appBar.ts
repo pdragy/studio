@@ -14,8 +14,6 @@ export const appBar: Partial<TypeOptions["resources"]["appBar"]> = {
   file: "ファイル",
   help: "ヘルプ",
   importLayoutFromFile: "ファイルからレイアウトをインポート",
-  joinOurSlack: "Slackに参加する",
-  joinSlackCommunity: "Slackコミュニティに参加する",
   noDataSource: "データソースがありません",
   open: "を開く",
   openConnection: "接続を開く",
