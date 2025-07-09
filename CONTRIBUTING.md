@@ -21,6 +21,25 @@ $ yarn web:serve
 $ yarn storybook
 ```
 
+## Desktop application
+
+Build the desktop app:
+```
+$ yarn run desktop:build:prod
+```
+
+Build the package for linux:
+```
+$ yarn run package:linux
+```
+
+Build the package for Windows:
+```
+$ yarn run package:win
+```
+
+Packages will be available in the `dist` directory.
+
 ### Other useful commands
 
 ```sh
