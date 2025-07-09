@@ -2,7 +2,7 @@
 // License, v2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
-import { Alert, Link, Tab, Tabs, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Alert, Tab, Tabs, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useState, useMemo, useCallback, useLayoutEffect, FormEvent } from "react";
 import { makeStyles } from "tss-react/mui";
 
@@ -242,19 +242,6 @@ export default function Connection(): JSX.Element {
                   </Stack>
                 </Stack>
               )}
-              <Stack direction="row" gap={1}>
-                {(selectedSource?.docsLinks ?? []).map((item) => (
-                  <Link
-                    key={item.url}
-                    color="primary"
-                    href={item.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {item.label ? `View docs for ${item.label}` : "View docs"}
-                  </Link>
-                ))}
-              </Stack>
             </Stack>
           </form>
         </Stack>

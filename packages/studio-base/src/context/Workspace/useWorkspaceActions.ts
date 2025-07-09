@@ -180,7 +180,7 @@ export function useWorkspaceActions(): WorkspaceActions {
       return;
     }
 
-    const name = getCurrentLayoutState().selectedLayout?.name ?? "foxglove-layout";
+    const name = getCurrentLayoutState().selectedLayout?.name ?? "trillium-layout";
     const content = JSON.stringify(layoutData, undefined, 2) ?? "";
     downloadTextFile(content, `${name}.json`);
   }, [getCurrentLayoutState]);

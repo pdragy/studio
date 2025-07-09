@@ -150,8 +150,6 @@ function WorkspaceContent(props: WorkspaceProps): JSX.Element {
 
   useDefaultWebLaunchPreference();
 
-  const [enableDebugMode = false] = useAppConfigurationValue<boolean>(AppSetting.SHOW_DEBUG_PANELS);
-
   const { workspaceExtensions = [] } = useAppContext();
 
   // When a player is activated, hide the open dialog.
@@ -304,7 +302,6 @@ function WorkspaceContent(props: WorkspaceProps): JSX.Element {
     const items = new Map<RightSidebarItemKey, SidebarItem>([
       ["variables", { title: t("variables"), component: VariablesList }],
     ]);
-    if (enableDebugMode) {
       if (PerformanceSidebarComponent) {
         items.set("performance", {
           title: t("performance"),
@@ -312,12 +309,11 @@ function WorkspaceContent(props: WorkspaceProps): JSX.Element {
         });
       }
       items.set("studio-logs-settings", { title: t("studioLogs"), component: StudioLogsSettings });
-    }
     if (showEventsTab) {
       items.set("events", { title: t("events"), component: EventsList });
     }
     return items;
-  }, [enableDebugMode, showEventsTab, t, PerformanceSidebarComponent]);
+  }, [showEventsTab, t, PerformanceSidebarComponent]);
 
   const keyboardEventHasModifier = (event: KeyboardEvent) =>
     navigator.userAgent.includes("Mac") ? event.metaKey : event.ctrlKey;
