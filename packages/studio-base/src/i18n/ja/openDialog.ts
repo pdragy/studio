@@ -5,21 +5,10 @@
 import { TypeOptions } from "i18next";
 
 export const openDialog: Partial<TypeOptions["resources"]["openDialog"]> = {
-  exploreSampleData: "サンプルデータを探索する",
-  learnMore: "詳細を見る",
-  needHelp: "ヘルプが必要ですか？",
-  needHelpDescription:
-    "ドキュメンテーションを見たり、Foxgloveブログのチュートリアルをチェックしてみましょう。",
-  newToFoxgloveStudio: "Foxglove を初めてご利用ですか？",
-  newToFoxgloveStudioDescription:
-    "サンプルデータセットを探索したり、ドキュメンテーションをチェックして開始してください。",
-  openAGitHubIssue: "GitHubの問題を開く",
   openConnection: "接続を開く",
   openConnectionDescription: "ライブロボットまたはサーバーに接続します。",
   openDataSource: "データソースを開く",
   openLocalFile: "ローカルファイルを開く",
   openLocalFileDescription: "ローカルファイルシステムから直接データを可視化します。",
   recentDataSources: "最近のデータソース",
-  seeTutorials: "チュートリアルを見る",
-  viewOurDocs: "ドキュメンテーションを見る",
 };

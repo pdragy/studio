@@ -7,7 +7,6 @@ import { TypeOptions } from "i18next";
 export const appBar: Partial<TypeOptions["resources"]["appBar"]> = {
   about: "情報",
   addPanel: "パネルを追加",
-  documentation: "ドキュメンテーション",
   exploreSampleData: "サンプルデータを探索する",
   exportLayoutToFile: "レイアウトをファイルにエクスポート",
   extensions: "拡張機能",
@@ -25,6 +24,5 @@ export const appBar: Partial<TypeOptions["resources"]["appBar"]> = {
   userProfile: "ユーザープロファイル",
   view: "表示",
   viewData: "データを見る",
-  viewOurDocs: "ドキュメンテーションを見る",
   profile: undefined,
 };
