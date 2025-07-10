@@ -29,7 +29,7 @@ export const defaultLayout: LayoutData =
             size: 10,
             divisions: 10,
             lineWidth: 1,
-            color: "#248eff",
+            color: "#6e8d3b",
             position: [0, 0, 0],
             rotation: [0, 0, 0],
             order: 1,
@@ -41,15 +41,5 @@ export const defaultLayout: LayoutData =
     },
     globalVariables: {},
     userNodes: {},
-    layout: {
-      first: "3D!18i6zy7",
-      second: {
-        first: "Image!3mnp456",
-        second: "RawMessages!os6rgs",
-        direction: "column",
-        splitPercentage: 30,
-      },
-      direction: "row",
-      splitPercentage: 70,
-    },
+    layout: "3D!18i6zy7"
   } as const);
