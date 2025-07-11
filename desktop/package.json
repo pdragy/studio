@@ -9,6 +9,6 @@
     "@foxglove/tsconfig": "2.0.0",
     "electron": "28.3.2",
     "playwright": "1.37.1",
-    "webpack": "5.94.0"
+    "webpack": "5.95.0"
   }
 }
