@@ -2,7 +2,7 @@
 // License, v2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
-import { Menu, PaperProps, PopoverPosition, PopoverReference } from "@mui/material";
+import { Menu, PaperProps, PopoverPosition, PopoverReference, MenuItem } from "@mui/material";
 import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { makeStyles } from "tss-react/mui";
@@ -186,6 +186,17 @@ export function AppMenu(props: AppMenuProps): JSX.Element {
     ],
   );
 
+  // SETTINGS
+
+  const handleNestedMenuEmpty = useCallback(() => {
+    setNestedMenu(undefined);
+  }, []);
+
+  const onSettingsClick = useCallback(() => {
+    dialogActions.preferences.open("general");
+    handleNestedMenuClose();
+  }, [dialogActions.preferences, handleNestedMenuClose]);
+
   // HELP
 
   const onAboutClick = useCallback(() => {
@@ -253,6 +264,13 @@ export function AppMenu(props: AppMenuProps): JSX.Element {
         >
           {t("help")}
         </NestedMenuItem>
+        <MenuItem
+          id="app-menu-settings"
+          onClick={onSettingsClick}
+          onPointerEnter={handleNestedMenuEmpty}
+        >
+          {t("settings")}
+        </MenuItem>
       </Menu>
     </>
   );
