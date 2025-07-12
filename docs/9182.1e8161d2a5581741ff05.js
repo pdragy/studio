@@ -1,0 +1,3 @@
+(()=>{"use strict";let a;const r=self.postMessage,o=self.postMessage;self.onmessage=t=>{const{type:n,data:s}=t.data;switch(n){case"open":try{a=new WebSocket(s.wsUrl,s.protocols),a.binaryType="arraybuffer",a.onerror=e=>{r({type:"error",error:e.error})},a.onopen=e=>{r({type:"open",protocol:a.protocol})},a.onclose=e=>{r({type:"close",data:JSON.parse(JSON.stringify(e)??"{}")})},a.onmessage=e=>{e.data instanceof ArrayBuffer?o({type:"message",data:e.data},[e.data]):r({type:"message",data:e.data})}}catch(e){r({type:"error",error:e??{message:"Insecure WebSocket connection"}})}break;case"close":a?.close();break;case"data":a?.send(s);break}}})();
+
+//# sourceMappingURL=9182.1e8161d2a5581741ff05.js.map
