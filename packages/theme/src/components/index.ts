@@ -4,7 +4,6 @@
 
 export * from "./MuiAlert";
 export * from "./MuiAutocomplete";
-export * from "./MuiAvatar";
 export * from "./MuiBadge";
 export * from "./MuiBackdrop";
 export * from "./MuiButton";
@@ -50,5 +49,4 @@ export * from "./MuiTabs";
 export * from "./MuiTextField";
 export * from "./MuiToggleButton";
 export * from "./MuiToolbar";
-export * from "./MuiTooltip";
 export * from "./MuiTypography";
