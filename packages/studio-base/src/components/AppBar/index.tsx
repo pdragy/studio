@@ -10,7 +10,7 @@ import {
   PanelRight24Regular,
   SlideAdd24Regular,
 } from "@fluentui/react-icons";
-import { Avatar, IconButton, Tooltip } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import tc from "tinycolor2";
@@ -37,10 +37,9 @@ import { CustomWindowControls, CustomWindowControlsProps } from "./CustomWindowC
 import { DataSource } from "./DataSource";
 import { SettingsMenu } from "./SettingsMenu";
 
-const useStyles = makeStyles<{ debugDragRegion?: boolean }, "avatar">()((
+const useStyles = makeStyles<{ debugDragRegion?: boolean }>()((
   theme,
-  { debugDragRegion = false },
-  classes,
+  { debugDragRegion = false }
 ) => {
   const NOT_DRAGGABLE_STYLE: Record<string, string> = { WebkitAppRegion: "no-drag" };
   if (debugDragRegion) {
@@ -114,34 +113,6 @@ const useStyles = makeStyles<{ debugDragRegion?: boolean }, "avatar">()((
       aspectRatio: 1,
       borderRadius: theme.shape.borderRadius,
       marginLeft: theme.spacing(1),
-    },
-    tooltip: {
-      marginTop: `${theme.spacing(0.5)} !important`,
-    },
-    avatar: {
-      color: theme.palette.common.white,
-      backgroundColor: tc(theme.palette.appBar.main).lighten().toString(),
-      height: theme.spacing(3.5),
-      width: theme.spacing(3.5),
-    },
-    iconButton: {
-      padding: theme.spacing(1),
-      borderRadius: 0,
-
-      "&:hover": {
-        backgroundColor: tc(theme.palette.common.white).setAlpha(0.08).toString(),
-
-        [`.${classes.avatar}`]: {
-          backgroundColor: tc(theme.palette.appBar.main).lighten(20).toString(),
-        },
-      },
-      "&.Mui-selected": {
-        backgroundColor: theme.palette.appBar.primary,
-
-        [`.${classes.avatar}`]: {
-          backgroundColor: tc(theme.palette.appBar.main).setAlpha(0.3).toString(),
-        },
-      },
     },
   };
 });
@@ -279,24 +250,6 @@ export function AppBar(props: AppBarProps): JSX.Element {
                   {rightSidebarOpen ? <PanelRight24Filled /> : <PanelRight24Regular />}
                 </AppBarIconButton>
               </Stack>
-              <Tooltip classes={{ tooltip: classes.tooltip }} title={t("profile")} arrow={false}>
-                <IconButton
-                  className={cx(classes.iconButton, { "Mui-selected": userMenuOpen })}
-                  aria-label="User profile menu button"
-                  color="inherit"
-                  id="user-button"
-                  data-tourid="user-button"
-                  aria-controls={userMenuOpen ? "user-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={userMenuOpen ? "true" : undefined}
-                  onClick={(event) => {
-                    setUserAnchorEl(event.currentTarget);
-                  }}
-                  data-testid="user-button"
-                >
-                  <Avatar className={classes.avatar} variant="rounded" />
-                </IconButton>
-              </Tooltip>
               {showCustomWindowControls && (
                 <CustomWindowControls
                   onMinimizeWindow={onMinimizeWindow}

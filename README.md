@@ -1,38 +1,40 @@
 ## Installation
 
-## Desktop
+## About
 
-In the Release section in Github, download the latest installer for your platform (only Windows and Linux available at this time).
+Trillium is a free, open source web app for robotics.
 
-To build the Desktop application, see CONTRIBUTING.md
+![Screenshot](./screenshot.png)
 
 ## Web
 
 Note: Only Chrome is fully supported at this time. Uploading local files won't work in Firefox.
 
-To run the web version of trillium, you can either
+To run the web version of trillium, either
 
-1. Visit it online [https://trillium.cloudv0.com](https://trillium.cloudv0.com)
-2. Run it offline locally in a browser, by downloading the packaged web files in the Release section of Github, and serving them locally, for example on linux:
+1. Visit the github page: [https://pdragy.github.io/trillium](https://pdragy.github.io/trillium)
+2. Run it offline locally, by downloading the packaged site in the Releases section of Github, and serving them locally, for example on linux:
 ```
 unzip trillium.zip
 python -m http.server 8080 --directory trillium
 ```
-3. Run it locally with docker, with the public container.
-```
-docker run -it -p 8080:8080 cloudv0/trillium
-```
-or
-4. Build and run the docker container locally:
+OR
+3. Build and run the docker container locally:
 
 ```
 docker build -t trillium .
 docker run --rm -it -p 8080:8080 trillium
 ```
 
-For 2, 3, or 4, visit http://localhost:8080 in your browser.
+For 2 or 3, visit http://localhost:8080 in your browser.
 
-For more ways to build and run the code, and for web app development, see CONTRIBUTING.md
+For more ways to build and run the code, see CONTRIBUTING.md
+
+## Desktop
+
+In the Releases section in Github, download the latest installer for your platform (only Windows and Linux available at this time).
+
+To build the Desktop application, see CONTRIBUTING.md
 
 ## History and related projects
 
