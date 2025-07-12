@@ -25,8 +25,6 @@ export const appBar = {
   showLeftSidebar: "Show left sidebar",
   showRightSidebar: "Show right sidebar",
   unknown: "unknown",
-  userProfile: "User profile",
   view: "View",
   viewData: "View data",
-  profile: "Profile",
 };

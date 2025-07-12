@@ -21,8 +21,6 @@ export const appBar: Partial<TypeOptions["resources"]["appBar"]> = {
   resetLayout: "レイアウトをリセットする",
   settings: "設定",
   unknown: "不明",
-  userProfile: "ユーザープロファイル",
   view: "表示",
   viewData: "データを見る",
-  profile: undefined,
 };

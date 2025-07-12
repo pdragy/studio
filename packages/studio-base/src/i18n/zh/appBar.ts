@@ -25,8 +25,6 @@ export const appBar: Partial<TypeOptions["resources"]["appBar"]> = {
   showLeftSidebar: "显示左侧边栏",
   showRightSidebar: "显示右侧边栏",
   unknown: "未知",
-  userProfile: "用户资料",
   view: "查看",
   viewData: "查看数据",
-  profile: "个人资料",
 };
