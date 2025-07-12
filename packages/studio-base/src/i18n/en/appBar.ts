@@ -21,7 +21,7 @@ export const appBar = {
   recentDataSources: "Recent data sources",
   recentlyViewed: "Recently viewed",
   resetLayout: "Reset layout",
-  settings: "Visualization settings",
+  settings: "Settings",
   showLeftSidebar: "Show left sidebar",
   showRightSidebar: "Show right sidebar",
   unknown: "unknown",
