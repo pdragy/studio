@@ -156,14 +156,16 @@ async function configureQuickLookExtension(context: AfterPackContext) {
   // certificate is not in the regular system keychain so we have to use the temporary keychain for
   // signing.
   //const keychainFile = await getKeychainFile(context);
-  const keychainFile = undefined;
+  //const keychainFile = undefined;
   //if (keychainFile != undefined) {
   //  await exec("security", ["find-identity", "-v", "-p", "codesigning", keychainFile]);
   //}
-  const signingArgs =
-    process.env.CI != undefined && keychainFile != undefined
-      ? ["--keychain", keychainFile, "--sign", "Developer ID Application"]
-      : ["--sign", "-"];
+  //  This fails 'yarn lint'
+  //const signingArgs = ["--sign", "-"];
+  //  process.env.CI != undefined && keychainFile != undefined
+  //    ? ["--keychain", keychainFile, "--sign", "Developer ID Application"]
+  //    : ["--sign", "-"];
+  const signingArgs = ["--sign", "-"];
 
   await exec("codesign", [
     ...signingArgs,

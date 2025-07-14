@@ -59,22 +59,12 @@ const useStyles = makeStyles()((theme) => ({
   tabPanelActive: {
     display: "block",
   },
-  checkbox: {
-    "&.MuiCheckbox-root": {
-      paddingTop: 0,
-    },
-  },
   dialogActions: {
     position: "sticky",
     backgroundColor: theme.palette.background.paper,
     borderTop: `${theme.palette.divider} 1px solid`,
     padding: theme.spacing(1),
     bottom: 0,
-  },
-  formControlLabel: {
-    "&.MuiFormControlLabel-root": {
-      alignItems: "start",
-    },
   },
   tab: {
     svg: {
