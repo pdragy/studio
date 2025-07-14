@@ -46,7 +46,8 @@ export function DataSourceDialog(props: DataSourceDialogProps): JSX.Element {
   const { classes } = useStyles();
   const { availableSources, selectSource } = usePlayerSelection();
   const { dialogActions } = useWorkspaceActions();
-  const { activeDataSource, item: activeView } = useWorkspaceStore(selectDataSourceDialog);
+  //const { activeDataSource, item: activeView } = useWorkspaceStore(selectDataSourceDialog);
+  const { item: activeView } = useWorkspaceStore(selectDataSourceDialog);
 
   const isMounted = useMountedState();
 
@@ -56,7 +57,7 @@ export function DataSourceDialog(props: DataSourceDialogProps): JSX.Element {
 
   const onModalClose = useCallback(() => {
     dialogActions.dataSource.close();
-  }, [activeDataSource, dialogActions.dataSource]);
+  }, [dialogActions.dataSource]);
 
   const prevActiveViewRef = useRef<DataSourceDialogItem | undefined>();
   useLayoutEffect(() => {

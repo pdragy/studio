@@ -149,7 +149,6 @@ export default function Connection(): JSX.Element {
     selectedSource,
     selectSource,
     fieldValues,
-    activeDataSource,
     dialogActions.dataSource,
   ]);
 
