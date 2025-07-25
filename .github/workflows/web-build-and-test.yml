@@ -31,4 +31,5 @@ jobs:
         yarn clean || true
         yarn web:build:prod
         yarn test
+        yarn storybook:build
         yarn desktop:build:prod
