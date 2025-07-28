@@ -17,6 +17,10 @@ import setImmediate from "@foxglove/studio-base/util/setImmediate";
 
 process.env.WASM_LZ4_ENVIRONMENT = "NODE";
 
+// HACK TODO: This is to fix show-open-file-picker tests
+import { WritableStream} from "node:stream/web";
+global.WritableStream = WritableStream;
+
 function noOp() {
   // no-op
 }

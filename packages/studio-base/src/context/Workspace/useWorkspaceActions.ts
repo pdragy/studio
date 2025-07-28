@@ -34,6 +34,7 @@ import {
   WorkspaceContextStore,
 } from "./WorkspaceContext";
 import { useOpenFile } from "./useOpenFile";
+import { showOpenFilePicker } from 'show-open-file-picker';
 
 export type WorkspaceActions = {
   dialogActions: {
@@ -136,7 +137,12 @@ export function useWorkspaceActions(): WorkspaceActions {
       return;
     }
 
-    const file = await fileHandles[0].getFile();
+    const fh = fileHandles[0];
+    if (!fh) {
+      return;
+    }
+
+    const file = await fh.getFile();
     const content = await file.text();
 
     if (!isMounted()) {

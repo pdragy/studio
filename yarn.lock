@@ -2898,6 +2898,7 @@ __metadata:
     sanitize-html: 2.12.1
     seedrandom: 3.0.5
     shallowequal: 1.1.0
+    show-open-file-picker: 0.4.0
     string-hash: 1.1.3
     string-replace-loader: 3.1.0
     style-loader: 3.3.4
@@ -21080,6 +21081,13 @@ __metadata:
   version: 1.8.3
   resolution: "shell-quote@npm:1.8.3"
   checksum: 550dd84e677f8915eb013d43689c80bb114860649ec5298eb978f40b8f3d4bc4ccb072b82c094eb3548dc587144bb3965a8676f0d685c1cf4c40b5dc27166242
+  languageName: node
+  linkType: hard
+
+"show-open-file-picker@npm:0.4.0":
+  version: 0.4.0
+  resolution: "show-open-file-picker@npm:0.4.0"
+  checksum: 0535987e49ce1753e50eac196a7435967165682c8d8c0837773111cc0990564dc51baea581dd821b9787e4844768a3f76ee56f6af1865216f4b8cc2a2ac11c07
   languageName: node
   linkType: hard
 

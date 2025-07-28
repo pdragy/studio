@@ -9,7 +9,7 @@ import {
   IDataSourceFactory,
   usePlayerSelection,
 } from "@foxglove/studio-base/context/PlayerSelectionContext";
-import showOpenFilePicker from "@foxglove/studio-base/util/showOpenFilePicker";
+import { showOpenFilePicker } from 'show-open-file-picker';
 
 export function useOpenFile(sources: readonly IDataSourceFactory[]): () => Promise<void> {
   const { selectSource } = usePlayerSelection();
